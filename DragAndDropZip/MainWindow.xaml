@@ -1,0 +1,17 @@
+﻿<Window x:Class="DragAndDropZip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragAndDropZip"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" x:Name="Panel" Margin="5">
+            <TextBlock x:Name="TextBox" Height="{Binding ElementName=Panel,Path=Height}" 
+                       AllowDrop="True" Drop="TextBox_Drop" FontSize="23"/>
+            <ComboBox Margin="5" Width="100" HorizontalAlignment="Left" x:Name="EncodingSelection" SelectionChanged="EncodingSelection_SelectionChanged"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
