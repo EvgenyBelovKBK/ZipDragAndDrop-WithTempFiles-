@@ -38,20 +38,16 @@ namespace DragAndDropZip
 
         private void TextBox_Drop(object sender, DragEventArgs e)
         {
-            var zips = new List<string>();
+            var zips = new Dictionary<string,string>();
             var data = (string [])e.Data.GetData(DataFormats.FileDrop);
+            var result = ZipHelper.OpenArchive(data.First(),zips);
             var selectedLogsText = new List<string>();
             foreach (var file in data)
             {
-                if (file.Contains("zip"))
-                {
-                    zips.Add(file);
-                }
-                else
-                    selectedLogsText.Add(ReadFile(new FileInfo(file).FullName));
+
             }
             if (zips.Count > 0)
-                 selectedLogsText.AddRange(ExtractZips(zips, new FileInfo(zips.First()).DirectoryName));
+                 
             foreach (var logText in selectedLogsText)
             {
                 TextBox.Text += string.Format("\n"+logText);
